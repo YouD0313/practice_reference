@@ -1,0 +1,304 @@
+.content {
+	height: 100%;
+}
+.closeBtn {
+	padding: 5px 10px 0 0;
+	font-size: 18px;
+	color: darkgrey;
+	float: right;
+}
+.info {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	width: 100%;
+}
+
+.tab-content {
+	position: relative;
+	top: 0;
+	width: 95%;
+}
+.tab-content > input[type='radio'] {
+	display: none;
+}
+.tab-content > input[type='radio'] + label {
+	display: inline-block;
+	margin-left: 5px;
+	padding: 15px;
+	font-size: 16px;
+	letter-spacing: -1px;
+	background: linear-gradient(
+		to top,
+		black,
+		rgb(17, 17, 17) 7%,
+		rgb(27, 27, 27)
+	);
+	color: dimgray;
+	border-radius: 5px 5px 0 0;
+	border: #cccccc 1px solid;
+	border-bottom: 0px;
+	cursor: pointer;
+	z-index: -1;
+}
+.tab-content > input[type='radio']:checked + label {
+	position: relative;
+	top: 1px;
+	font-weight: 400;
+	background: rgb(20, 20, 20);
+	color: dodgerblue;
+	z-index: 5;
+	transition: all 0.3s;
+}
+.tab-content .conbox {
+	display: none;
+	position: absolute;
+	top: 49px;
+	width: 100%;
+	height: 100px;
+	margin-right: 10px;
+	padding: 5px 0 10px 0;
+	background: rgb(20, 20, 20);
+	border-top: #cccccc 1px solid;
+	color: rgb(160, 160, 160);
+	/* background: chartreuse; */
+}
+.tab-content > input[id='tab1']:checked ~ .con1 {
+	display: block;
+	height: auto;
+	overflow: auto;
+}
+.tab-content > input[id='tab2']:checked ~ .con2 {
+	display: block;
+}
+.tab-content > input[id='tab3']:checked ~ .con3 {
+	display: block;
+}
+.tab-content .item {
+	padding: 10px 0 5px 0;
+}
+/* ?뚯씠釉??ㅽ???*/
+.tab-content table {
+	width: calc(100% - 1px);
+	border-collapse: collapse;
+}
+.tab-content th,
+.tab-content td {
+	font-size: 16px;
+	text-align: center;
+	padding: 7px 2px;
+	border: rgb(63, 63, 63) 1px solid;
+}
+.tab-content th {
+	/* background: rgb(3, 3, 3); */
+	background: dodgerblue;
+	color: white;
+}
+.tab-content .sub {
+	background: rgb(3, 3, 3);
+}
+.gen-mo {
+	background: rgb(75, 75, 75);
+	text-align: center;
+}
+.tab-content .decent-tit {
+	text-align: left;
+}
+.tab-content .line {
+	height: 2px;
+	background: rgb(63, 63, 63);
+	padding: unset;
+}
+.tab-content tr:first-child td {
+	border: 0;
+	line-height: 25px;
+	color: white;
+	font-weight: 700;
+}
+
+.descent {
+	width: 100%;
+	padding: 0 5px;
+	border: rgb(80, 80, 80) 1px solid;
+}
+.dotLine {
+	width: 100%;
+	border-top: 0;
+	border-bottom: rgb(100, 100, 100) 1px dotted;
+	border-left: 0;
+	border-right: 0;
+}
+.boxwrap {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 5px;
+}
+.box {
+	display: flex;
+	align-items: center;
+	height: 170px;
+}
+.box.one {
+	width: 40%;
+}
+.box.two {
+	width: 20%;
+}
+.box.three {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 40%;
+}
+.parent {
+	width: 100%;
+	border: dodgerblue 1px solid;
+}
+.parent > div {
+	text-align: center;
+	padding: 7px 3px;
+	font-size: 16px;
+	color: rgb(202, 202, 202);
+}
+.parent > div:first-child {
+	background: dodgerblue;
+	color: rgb(255, 255, 255);
+	font-weight: 700;
+}
+hr {
+	width: 50%;
+	border-top: dodgerblue 1px solid;
+	border-bottom: 0;
+	border-left: 0;
+	border-right: 0;
+}
+.box.two > div {
+	width: 50%;
+	height: 100px;
+	border-top: dodgerblue 1px solid;
+	border-left: dodgerblue 1px solid;
+	border-bottom: dodgerblue 1px solid;
+}
+
+.descent .boxwrap:nth-of-type(2) .parent {
+	border: rgb(235, 90, 22) 1px solid;
+}
+.descent .boxwrap:nth-of-type(2) .parent > div:first-child {
+	background: rgb(235, 90, 22);
+}
+.descent .boxwrap:nth-of-type(2) hr {
+	border-top: rgb(235, 90, 22) 1px solid;
+}
+.descent .boxwrap:nth-of-type(2) .box.two > div {
+	border-top: rgb(235, 90, 22) 1px solid;
+	border-left: rgb(235, 90, 22) 1px solid;
+	border-bottom: rgb(235, 90, 22) 1px solid;
+}
+
+/* 이전 다음 */
+.angleBtn {
+	font-size: 3rem;
+	display: flex;
+	justify-content: space-between;
+	line-height: 3rem;
+	padding: 10px 0;
+}
+
+.angleBtn div span {
+	font-size: 2.5rem;
+}
+
+.angleBtn i {
+	vertical-align: middle;
+}
+
+.angleBtn div {
+	cursor: pointer;
+}
+
+#descent-window {
+	display: none;
+	width: 600px;
+}
+
+#descent-window.open {
+	display: block;
+}
+
+#descent-close {
+	cursor: pointer;
+}
+
+/* 스피너시 클릭금지 */
+body.noClick {
+	pointer-events: none;
+	filter: brightness(0.4);
+}
+
+/* 스피너 */
+.spinner {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-110%, -1000%);
+	margin: 100px auto 0;
+	width: 70px;
+	text-align: center;
+	visibility: hidden;
+}
+
+.spinner.start {
+	visibility: visible;
+}
+
+.spinner > div {
+	width: 18px;
+	height: 18px;
+	background-color: rgb(208, 211, 190);
+
+	border-radius: 100%;
+	display: inline-block;
+	-webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+	animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.spinner .bounce1 {
+	-webkit-animation-delay: -0.32s;
+	animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+	-webkit-animation-delay: -0.16s;
+	animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+	0%,
+	80%,
+	100% {
+		-webkit-transform: scale(0);
+	}
+	40% {
+		-webkit-transform: scale(1);
+	}
+}
+
+@keyframes sk-bouncedelay {
+	0%,
+	80%,
+	100% {
+		-webkit-transform: scale(0);
+		transform: scale(0);
+	}
+	40% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+/* 송아지 테이블 hidden */
+#only_level_1.hidden {
+	visibility: hidden;
+}

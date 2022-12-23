@@ -1,0 +1,103 @@
+@import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+	list-style: none;
+	box-sizing: border-box;
+}
+html,
+body {
+	height: 100%;
+	background-color: rgb(148, 148, 148);
+	font-family: 'nanumsquare';
+	text-shadow: rgb(0, 0, 0) 0 0 1px;
+}
+.popupContainer,
+.descent-container {
+	width: 1100px;
+	height: 700px;
+	padding: 0 20px;
+	overflow: auto;
+}
+.descent-container {
+	width: 600px;
+	padding: 30px 0;
+	background: rgb(20, 20, 20);
+}
+.popupContainer .title {
+	margin-top: 20px;
+	padding: 15px;
+	font-size: 24px;
+	text-align: center;
+	color: white;
+	border-radius: 10px;
+	background: slateblue;
+}
+.popupContent {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	padding: 20px 0;
+}
+.popupContainer .imgCon {
+	display: inline-block;
+	width: 560px;
+}
+.popupContainer .txtCon {
+	display: inline-block;
+	width: 460px;
+	height: 300px;
+}
+.popupContainer table {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 10px 15px;
+	font-size: 16px;
+	color: rgb(148, 148, 148);
+}
+.popupContainer td {
+	vertical-align: top;
+	line-height: 25px;
+}
+
+.popupContainer::-webkit-scrollbar,
+.descent-container::-webkit-scrollbar {
+	width: 18px;
+}
+.popupContainer::-webkit-scrollbar-thumb,
+.descent-container::-webkit-scrollbar-thumb {
+	background-color: #464646;
+	border-radius: 0;
+	background-clip: padding-box;
+}
+.popupContainer::-webkit-scrollbar-track,
+.descent-container::-webkit-scrollbar-track {
+	background-color: rgb(37, 37, 37);
+	border-radius: 0;
+}
+.popupContainer::-webkit-scrollbar-corner,
+.descent-container::-webkit-scrollbar-corner {
+	background-color: rgb(37, 37, 37);
+}
+#guideDivheader,
+#descent-windowheader {
+	padding: 10px;
+	cursor: move;
+	z-index: 10;
+	background-color: #2b2b2b;
+	color: #fff;
+}
+#guideDivheader .top span,
+#descent-windowheader .top span {
+	display: inline-block;
+	padding: 0 7px;
+	font-size: 16px;
+	font-weight: 700;
+	color: rgb(255, 254, 254);
+	cursor: pointer;
+}
+#guideDivheader .top span:last-child,
+#descent-windowheader .top span:last-child {
+	float: right;
+}

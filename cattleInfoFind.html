@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta
+			name="viewport"
+			content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+		/>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="format-detection" content="telephone=no" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="http://www.한우경매.kr/dev/web/css/layout.css"
+		/>
+		<link rel="stylesheet" type="text/css" href="sch-ref.css" />
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="http://www.한우경매.kr/dev/web/css/modal-window_plan.css"
+		/>
+		<link rel="stylesheet" type="text/css" href="tabMenu_case.css" />
+		<link rel="stylesheet" type="text/css" href="popup.css" />
+		<script
+			src="https://code.jquery.com/jquery-3.6.2.js"
+			integrity="sha256-pkn2CUZmheSeyssYw3vMp1+xyub4m+e+QK4sQskvuo4="
+			crossorigin="anonymous"
+		></script>
+		<script
+			src="https://kit.fontawesome.com/7e695e6e41.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="bloodChecked.js" defer></script>
+		<title>개체혈통조회</title>
+	</head>
+	<body>
+		<!-- 스피너 -->
+		<div class="spinner">
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+			<div class="bounce3"></div>
+		</div>
+
+		<div class="list">
+			<table>
+				<tr>
+					<td width="8%" style="color: #000000">경매일자</td>
+					<td width="10%">경매번호</td>
+					<td width="8%">출하주</td>
+					<td width="18%">개체번호</td>
+					<td width="8%">성별</td>
+					<td width="10%">생년월일</td>
+					<td width="8%">KPN</td>
+					<td width="6%">계대</td>
+					<td width="6%">산차</td>
+					<td width="17%">비고</td>
+				</tr>
+			</table>
+		</div>
+		<div
+			class="list2"
+			id="auctionListDiv"
+			style="width: 100%; height: 73%; margin-top: 0px; overflow-y: scroll"
+		>
+			<table id="auctionProcessingTable">
+				<tr>
+					<td width="8%">2022.12.15</td>
+					<td width="8%">1</td>
+					<td width="8%">이*권</td>
+					<td width="17%">
+						<span id="descent-open" class="descentInfo">177793315</span>
+					</td>
+					<td width="8%">수</td>
+					<td width="10%" align="center">2022-05-26</td>
+					<td width="8%" align="center">1330</td>
+					<td width="6%" align="center">7</td>
+					<td width="6%" align="center">3</td>
+					<td align="center" width="15%"></td>
+				</tr>
+				<tr>
+					<td width="8%">2022.12.15</td>
+					<td width="8%">2</td>
+					<td width="8%">강*수</td>
+					<td width="17%">
+						<span id="descent-open" class="descentInfo">175644960</span>
+					</td>
+					<td width="8%">수</td>
+					<td width="10%" align="center">2022-05-26</td>
+					<td width="8%" align="center">1508</td>
+					<td width="6%" align="center">5</td>
+					<td width="6%" align="center">7</td>
+					<td align="center" width="15%">아비일치</td>
+				</tr>
+				<tr>
+					<td width="8%">2022.12.15</td>
+					<td width="8%">3</td>
+					<td width="8%">정*섭</td>
+					<td width="17%">
+						<span id="descent-open" class="descentInfo">177794973</span>
+					</td>
+					<td width="8%">수</td>
+					<td width="10%" align="center">2022-05-28</td>
+					<td width="8%" align="center">1349</td>
+					<td width="6%" align="center">4</td>
+					<td width="6%" align="center">2</td>
+					<td align="center" width="15%">아비일치</td>
+				</tr>
+				<tr>
+					<td width="8%">2022.12.15</td>
+					<td width="8%">4</td>
+					<td width="8%">최*식</td>
+					<td width="17%">
+						<span id="descent-open" class="descentInfo">177793913</span>
+					</td>
+					<td width="8%">수</td>
+					<td width="10%" align="center">2022-05-24</td>
+					<td width="8%" align="center">1505</td>
+					<td width="6%" align="center">4</td>
+					<td width="6%" align="center">2</td>
+					<td align="center" width="15%"></td>
+				</tr>
+				<tr>
+					<td width="8%">2022.12.15</td>
+					<td width="8%">5</td>
+					<td width="8%">이*균</td>
+					<td width="17%">
+						<span id="descent-open" class="descentInfo">177794334</span>
+					</td>
+					<td width="8%">수</td>
+					<td width="10%" align="center">2022-05-21</td>
+					<td width="8%" align="center">1368</td>
+					<td width="6%" align="center">3</td>
+					<td width="6%" align="center">4</td>
+					<td align="center" width="15%"></td>
+				</tr>
+			</table>
+		</div>
+
+		<div id="descent-window" class="modal-window">
+			<div class="bg"></div>
+			<div class="descent-container">
+				<div class="content" style="width: 575px">
+					<div
+						id="descent-close"
+						style="
+							z-index: 1000;
+							position: relative;
+							left: 83%;
+							top: 40px;
+							width: 54px;
+							font-size: 16px;
+							line-height: 35px;
+							padding: 0 10px;
+							font-weight: 800;
+							color: rgb(36, 149, 255);
+							border: rgb(45, 101, 153) 1px solid;
+							border-radius: 3px;
+							background: rgb(27, 27, 27);
+						"
+					>
+						닫기
+					</div>
+					<div class="info">
+						<div class="tab-content">
+							<input
+								type="radio"
+								id="tab1"
+								name="tab-menu"
+								value="1"
+								checked
+							/><label for="tab1" style="color: #f5f5f4; font-weight: 700"
+								>혈통조회</label
+							><input type="radio" id="tab2" name="tab-menu" value="2" />
+							<div class="conbox con1">
+								<!-- 송아지 이표 클릭시 -->
+								<div class="item" id="only_level_1">
+									<table>
+										<tr>
+											<td colspan="5" class="decent-tit">
+												&nbsp; &#9654; 송아지
+												<span
+													style="
+														color: #999999;
+														position: relative;
+														left: 34%;
+														color: #f5f5f4;
+													"
+													>제공:한국종축개량협회</span
+												>
+											</td>
+										</tr>
+										<tr>
+											<th>개체</th>
+											<th>축주</th>
+											<th>계대</th>
+											<th>산차</th>
+										</tr>
+										<tr>
+											<td id="s_cattleNo" style="color: #f5f5f4"></td>
+											<td id="s_cattleOwner" style="color: #f5f5f4"></td>
+											<td id="s_cattleAge" style="color: #f5f5f4"></td>
+											<td id="s_cattleSancha" style="color: #f5f5f4"></td>
+										</tr>
+										<tr>
+											<th>등록</th>
+											<th>어미이표</th>
+											<th>성별</th>
+											<th>생년월일</th>
+										</tr>
+										<tr>
+											<td id="s_cattleLevel" style="color: #f5f5f4"></td>
+											<td id="s_motherNo" style="color: #f5f5f4"></td>
+											<td id="s_gFatherKpn" style="color: #f5f5f4"></td>
+											<td id="s_ggFatherNo" style="color: #f5f5f4"></td>
+										</tr>
+										<tr>
+											<th>친자</th>
+											<th>제각</th>
+											<th colspan="2">비고</th>
+										</tr>
+										<tr>
+											<td id="s_cattle_real" style="color: #f5f5f4"></td>
+											<td id="s_removeHorn" style="color: #f5f5f4"></td>
+											<td
+												colspan="2"
+												id="s_cattleRemark"
+												style="color: #f5f5f4"
+											></td>
+										</tr>
+									</table>
+								</div>
+								<!-- 큰소 이표 클릭시 -->
+								<!-- <div class="item" id="only_level_2">
+									<table>
+										<tr>
+											<td colspan="5" class="decent-tit">
+												&nbsp &#9654; 큰소
+												<span
+													style="
+														color: #999999;
+														position: relative;
+														left: 35%;
+														color: #f5f5f4;
+													"
+													>제공:한국종축개량협회</span
+												>
+											</td>
+										</tr>
+										<tr>
+											<th rowspan="2" class="sub">큰소</th>
+											<th>개체</th>
+											<th>축주</th>
+											<th>등록</th>
+											<th>산차</th>
+										</tr>
+										<tr>
+											<td id="cattleNo" style="color: #f5f5f4"></td>
+											<td id="cattleOwner" style="color: #f5f5f4"></td>
+											<td id="cattleLevel" style="color: #f5f5f4"></td>
+											<td id="cattleSancha" style="color: #f5f5f4"></td>
+										</tr>
+										<tr>
+											<th rowspan="2" class="sub">임신</th>
+											<th>수정일자</th>
+											<th>KPN</th>
+											<th>임신월령</th>
+											<th width="18%">비고</th>
+										</tr>
+										<tr>
+											<td id="artiDate" style="color: #f5f5f4"></td>
+											<td id="cattleKpn" style="color: #f5f5f4"></td>
+											<td id="pregnantMonth" style="color: #f5f5f4"></td>
+											<td id="cattleRemark" style="color: #f5f5f4"></td>
+										</tr>
+										<tr>
+											<th rowspan="2" class="sub">송아지</th>
+											<th>이표</th>
+											<th>성별</th>
+											<th>생년월일</th>
+											<th>KPN</th>
+										</tr>
+										<tr>
+											<td id="calf_no" style="color: #f5f5f4">&nbsp;</td>
+											<td id="calf_sex" style="color: #f5f5f4">&nbsp;</td>
+											<td id="calf_birth" style="color: #f5f5f4">&nbsp;</td>
+											<td id="calf_kpn" style="color: #f5f5f4">&nbsp;</td>
+										</tr>
+									</table>
+								</div> -->
+
+								<div class="item">
+									<table>
+										<tr>
+											<td colspan="3"></td>
+										</tr>
+										<tr>
+											<td style="color: #f5f5f4">번식자</td>
+											<td id="cBreederName" style="color: #f5f5f4"></td>
+											<td id="cBreederAddr" style="color: #f5f5f4"></td>
+										</tr>
+										<tr>
+											<td style="color: #f5f5f4">소유자</td>
+											<td id="cOwnerName" style="color: #f5f5f4"></td>
+											<td id="cOwnerAddr" style="color: #f5f5f4"></td>
+										</tr>
+									</table>
+								</div>
+								<div class="item">
+									<table>
+										<tr>
+											<th>냉도<br />체중</th>
+											<th>배최장근<br />체중</th>
+											<th>등지방<br />두께</th>
+											<th>근내<br />지방도</th>
+										</tr>
+										<tr>
+											<td id="coldnessWeight" style="color: #f5f5f4"></td>
+											<td id="crossSection" style="color: #f5f5f4"></td>
+											<td id="backThickness" style="color: #f5f5f4"></td>
+											<td id="muscleFat" style="color: #f5f5f4"></td>
+										</tr>
+										<tr>
+											<td id="coldnessWeight_level" style="color: #f5f5f4"></td>
+											<td id="crossSection_level" style="color: #f5f5f4"></td>
+											<td id="backThickness_level" style="color: #f5f5f4"></td>
+											<td id="muscleFat_level" style="color: #f5f5f4"></td>
+										</tr>
+									</table>
+								</div>
+								<div class="item">
+									개체유전능력은 절대값이 아니므로 참고용으로 사용하시기
+									바랍니다.
+								</div>
+								<div class="descent">
+									<div class="boxwrap">
+										<div class="box one">
+											<div class="parent">
+												<div>부</div>
+												<div>
+													<span id="father_kpn" style="color: #f5f5f4"></span
+													><br /><span
+														id="father_uniqNumber"
+														style="color: #f5f5f4"
+													></span>
+												</div>
+											</div>
+										</div>
+										<div class="box two">
+											<hr />
+											<div></div>
+										</div>
+										<div class="box three">
+											<div class="parent fa">
+												<div>조부</div>
+												<div>
+													<span
+														id="grandFather_1_kpn"
+														style="color: #f5f5f4"
+													></span
+													><br /><span
+														id="grandFather_1_uniqNumber"
+														style="color: #f5f5f4"
+													></span>
+												</div>
+											</div>
+											<div class="parent mo">
+												<div>조모</div>
+												<div>
+													<span
+														id="grandMother_1_kpn"
+														style="color: #f5f5f4"
+													></span
+													><br /><span
+														id="grandMother_1_uniqNumber"
+														style="color: #f5f5f4"
+													></span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<hr class="dotLine" />
+									<div class="boxwrap">
+										<div class="box one">
+											<div class="parent">
+												<div>모</div>
+												<div>
+													<span id="mother_kpn" style="color: #f5f5f4"></span
+													><br /><span
+														id="mother_uniqNumber"
+														style="color: #f5f5f4"
+													></span>
+												</div>
+											</div>
+										</div>
+										<div class="box two">
+											<hr />
+											<div></div>
+										</div>
+										<div class="box three">
+											<div class="parent fa">
+												<div>외조부</div>
+												<div>
+													<span
+														id="grandFather_2_kpn"
+														style="color: #f5f5f4"
+													></span
+													><br /><span
+														id="grandFather_2_registNumber"
+														style="color: #f5f5f4"
+													></span>
+												</div>
+											</div>
+											<div class="parent mo">
+												<div>외조모</div>
+												<div>
+													<span
+														id="grandMother_2_kpn"
+														style="color: #f5f5f4"
+													></span
+													><br /><span
+														id="grandMother_2_uniqNumber"
+														style="color: #f5f5f4"
+													></span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<hr class="dotLine" />
+									<div class="angleBtn">
+										<div class="left">
+											<i class="fa-solid fa-angle-left"></i><span>이전</span>
+										</div>
+										<div class="right">
+											<span>다음</span><i class="fa-solid fa-angle-right"></i>
+										</div>
+									</div>
+								</div>
+								<div class="item"></div>
+							</div>
+							<div class="conbox con2">
+								<div
+									class="item"
+									id="selfRelative"
+									style="color: #f5f5f4"
+								></div>
+								<div class="item" id="tabMenu2" style="color: #f5f5f4"></div>
+								<div class="item"></div>
+							</div>
+							<div class="conbox con3">
+								<div class="item" id="tabMenu3" style="color: #f5f5f4"></div>
+								<div class="item"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
