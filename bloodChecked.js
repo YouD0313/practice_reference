@@ -50,13 +50,17 @@ function text(data) {
 function APIcattleNum(apiData) {
 	const jsonParse = apiData.response.body.items.item;
 	const catNum = String(jsonParse.cattleNo);
-	$('#s_cattleNo').text(catNum.slice(-9));
+	const catBirth = jsonParse.birthYmd;
+	const replaceBirth = catBirth.replaceAll('-', '');
+	console.log('catBirth', catBirth);
+	console.log('replaceBirth', replaceBirth);
+	$('#s_cattleNo').text(catNum);
 	$('#s_cattleAge').text('-');
 	$('#s_cattleSancha').text('-');
 	$('#s_cattleLevel').text('-');
 	$('#s_motherNo').text('-');
 	$('#s_gFatherKpn').text(jsonParse.sexNm);
-	$('#s_ggFatherNo').text(jsonParse.birthYmd);
+	$('#s_ggFatherNo').text(replaceBirth);
 	$('#s_cattle_real').text('-');
 	$('#s_removeHorn').text('-');
 	$('#s_cattleRemark').text('-');
@@ -65,6 +69,7 @@ function APIcattleNum(apiData) {
 function APIOwnerName(apiData) {
 	const jsonParse = apiData.response.body.items.item;
 	const ownerName = jsonParse[0].farmerNm;
+	console.log('ownerName', ownerName);
 	const fixName = ownerName.replace(ownerName[ownerName.length - 2], '*');
 	$('#s_cattleOwner').text(fixName);
 }
@@ -245,6 +250,9 @@ parents.forEach((pa, idx) => {
 					+cattleNoSlice,
 				dataType: 'json',
 				success: function (apiData) {
+					console.log(apiData);
+					const jsonParse = apiData.response.body.items.item;
+					console.log(jsonParse);
 					APIcattleNum(apiData);
 				},
 			});
